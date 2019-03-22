@@ -1,3 +1,5 @@
+// const restrictedGlobals = require('eslint-restricted-globals');
+
 module.exports = {
   root: true,
   env: {
@@ -113,7 +115,7 @@ module.exports = {
 
     /**
      * 强制 typeof 表达式与有效的字符串字面量或其它 typeof 表达式进行比较
-     * （"undefined"、"object"、"boolean"、"number"、"string"、"function" 和 "symbol"）
+     * （'undefined'、'object'、'boolean'、'number'、'string'、'function' 和 'symbol'）
      */
     // 'valid-typeof': ['error', { requireStringLiterals: true }],
 
@@ -401,11 +403,123 @@ module.exports = {
     // strict: ['error', 'never']
 
     /**
-     * Variables
+     * Variables (12)
      */
 
     // 强制或禁止在变量声明语句中初始化
     // 'init-declarations': 'off',
+
+    // 禁止 catch 子句的参数与外层作用域中的变量同名 （BY NUFRONT）
+    'no-catch-shadow': 'error',
+
+    // 禁止 delete 变量
+    // 'no-delete-var': 'error',
+
+    // 禁止标签与变量同名
+    // 'no-label-var': 'error',
+
+    // 禁止使用特定的全局变量
+    // 'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(restrictedGlobals),
+
+    // 禁止变量声明与外层作用域的变量同名 （BY NUFRONT）
+    'no-shadow': ['error', { 'builtinGlobals': true, 'hoist': 'all', 'allow': [] }],
+
+    // 禁止重定义关键字
+    // 'no-shadow-restricted-names': 'error',
+
+    // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到 （BY NUFRONT）
+    'no-undef': ['error', { 'typeof': true }],
+
+    // 禁止将变量初始化为 undefined
+    // 'no-undef-init': 'error',
+
+    // 禁止使用 undefined
+    // 'no-undefined': 'off',
+
+    // 禁止出现未使用过的变量 （BY NUFRONT）
+    'no-unused-vars': ['error', {
+      vars: 'all',
+      args: 'all',
+      ignoreRestSiblings: false,
+      caughtErrors: 'none'
+    }],
+
+    // 禁止在变量定义之前使用它们
+    // 'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+
+    /**
+     * Node.js and CommonJS (11)
+     */
+
+    // 强制返回 callback 函数
+    // 'callback-return': 'off',
+
+    // 强制要求 require() 出现在模块作用域中的顶层
+    // 'global-require': 'error',
+
+    // 强制要求回调函数中有调用 err 参数的容错处理
+    // 'handle-callback-err': 'off',
+
+    // 禁止使用 Buffer() 构造函数
+    // 'no-buffer-constructor': 'error',
+
+    // 禁止 require 调用与普通变量声明混合使用 （BY NUFRONT）
+    'no-mixed-requires': ['error', {
+      grouping: true,
+      allowCall: true
+    }],
+
+    // 禁止调用 require 时使用 new 操作符
+    // 'no-new-require': 'error',
+
+    // 禁止对 __dirname 和 __filename 进行字符串连接
+    // 'no-path-concat': 'error',
+
+    // 禁止使用 process.env
+    // 'no-process-env': 'off',
+
+    // 禁止使用 process.exit()
+    // 'no-process-exit': 'off',
+
+    // 禁止使用特定的 Node.js 模块
+    // 'no-restricted-modules': 'off',
+
+    // 禁止使用同步方法
+    // 'no-sync': 'off',
+
+    /**
+     * Stylistic Issues
+     */
+
+    // 强制在数组开括号后和闭括号前换行 （BY NUFRONT）
+    'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
+
+    // 强制数组方括号旁使用一致的空格
+    // 'array-bracket-spacing': ['error', 'never'],
+
+    // 强制数组元素间出现换行
+    // 'array-element-newline': ['off', { multiline: true, minItems: 3 }],
+
+    // 禁止或强制在代码块中开括号前和闭括号后有空格
+    // 'block-spacing': ['error', 'always'],
+
+    // 大括号风格要求
+    // 'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+
+    // 强制使用骆驼命名法 （BY NUFRONT）
+    camelcase: ['error', { properties: 'always' }],
+
+    // 强制或禁止对注释的第一个字母大写 （BY NUFRONT）
+    'capitalized-comments': 'off',
+
+    // 强制使用或禁止使用拖尾逗号
+    // 'comma-dangle': ['error', {
+    //   arrays: 'always-multiline',
+    //   objects: 'always-multiline',
+    //   imports: 'always-multiline',
+    //   exports: 'always-multiline',
+    //   functions: 'always-multiline',
+    // }],
 
     /**
      * Code Style
