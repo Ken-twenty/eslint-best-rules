@@ -86,6 +86,9 @@ export default {
   },
   methods: {
     testTool,
+    testFn: function () {
+      console.log('test');
+    },
   },
   mounted() {
     const cls = new TestCls();
@@ -93,6 +96,7 @@ export default {
     /**
      * fuck
      */
+    this.testFn();
   },
 };
 </script>
