@@ -1068,7 +1068,7 @@ module.exports = {
     'wrap-regex': 'off',
 
     /**
-     * ES6
+     * ES6 (31)
      */
 
     // 强制要求箭头函数体使用大括号
@@ -1162,6 +1162,40 @@ module.exports = {
         enforceForRenamedProperties: false,
       }
     ],
+
+    // 禁止使用 parseInt() 和 Number.parseInt()，使用二进制，八进制和十六进制字面量
+    'prefer-numeric-literals': 'error',
+
+    // 强制使用剩余参数代替 arguments
+    'prefer-rest-params': 'error',
+
+    // 强制使用扩展运算符而非 .apply()
+    'prefer-spread': 'error',
+
+    // 强制使用模板而非字符串连接
+    'prefer-template': 'error',
+
+    // 禁止使用没有 yield 的 generator 函数
+    'require-yield': 'error',
+
+    // 强制剩余和扩展运算符及其表达式之间的空格
+    'rest-spread-spacing': ['error', 'never'],
+
+    // 强制要求 import 排序
+    'sort-imports': ['error', {
+      ignoreCase: false,
+      ignoreMemberSort: true,
+      memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+    }],
+
+    // 强制要求 symbol 描述
+    'symbol-description': 'error',
+
+    // 强制模板字符串中空格的使用
+    'template-curly-spacing': ['error', 'never'],
+
+    // 强制在 yield 表达式中 * 周围使用空格
+    'yield-star-spacing': ['error', 'before']
   },
   parserOptions: { parser: 'babel-eslint' },
 };
