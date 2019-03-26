@@ -1195,7 +1195,7 @@ module.exports = {
     'template-curly-spacing': ['error', 'never'],
 
     // 强制在 yield 表达式中 * 周围使用空格
-    'yield-star-spacing': ['error', 'before']
+    'yield-star-spacing': ['error', 'before'],
   },
   parserOptions: { parser: 'babel-eslint' },
 };
