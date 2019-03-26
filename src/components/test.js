@@ -1,5 +1,9 @@
 export default class TestCls {
-    static show() {
-        console.log('hello');
-    }
+
+  static show() {
+
+    console.log('hello');
+
+  }
+
 }

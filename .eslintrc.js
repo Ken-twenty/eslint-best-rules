@@ -2,13 +2,8 @@ const restrictedGlobals = require('eslint-restricted-globals');
 
 module.exports = {
   root: true,
-  env: {
-    node: true,
-  },
-  extends: [
-    'plugin:vue/essential',
-    '@vue/airbnb',
-  ],
+  env: { node: true },
+  extends: ['plugin:vue/essential', '@vue/airbnb'],
   rules: {
     /**
      * Possible Errors (34)
@@ -139,10 +134,10 @@ module.exports = {
     complexity: 'off',
 
     // 强制 return 语句要么总是指定返回的值，要么不指定
-    'consistent-return': ['error', { 'treatUndefinedAsUnspecified': false }],
+    'consistent-return': ['error', { treatUndefinedAsUnspecified: false }],
 
     // 强制所有控制语句使用一致的括号风格
-    curly: 'error',
+    curly: ['error', 'all'],
 
     // 强制 Switch 语句中有 Default 分支 （使用 /^no default$/ 注释可以规避报错）
     'default-case': ['error', { commentPattern: '^no default$' }],
@@ -154,7 +149,11 @@ module.exports = {
     'dot-notation': ['error', { allowKeywords: false }],
 
     // 强制使用 === 和 !== （null 除外）
-    eqeqeq: ['error', 'always', { null: 'ignore' }],
+    eqeqeq: [
+      'error',
+      'always',
+      { null: 'ignore' },
+    ],
 
     // 强制 for-in 循环中有一个 if 语句进行约束
     'guard-for-in': 'error',
@@ -184,7 +183,7 @@ module.exports = {
     'no-eq-null': 'error',
 
     // 禁用 eval()
-    'no-eval': ['error', { 'allowIndirect': false }],
+    'no-eval': ['error', { allowIndirect: false }],
 
     // 禁止扩展原生对象
     'no-extend-native': 'error',
@@ -205,12 +204,15 @@ module.exports = {
     'no-global-assign': 'error',
 
     // 禁止使用较短的符号实现类型转换
-    'no-implicit-coercion': ['error', {
-      boolean: false,
-      number: true,
-      string: true,
-      allow: [],
-    }],
+    'no-implicit-coercion': [
+      'error',
+      {
+        boolean: false,
+        number: true,
+        string: true,
+        allow: [],
+      },
+    ],
 
     // 禁止在全局作用域下隐式声明全局变量和全局函数
     'no-implicit-globals': 'error',
@@ -237,9 +239,7 @@ module.exports = {
     'no-magic-numbers': 'off',
 
     // 禁止使用多个空格
-    'no-multi-spaces': ['error', {
-      ignoreEOLComments: false,
-    }],
+    'no-multi-spaces': ['error', { ignoreEOLComments: false }],
 
     // 禁止使用 \ 连接的多行字符串
     'no-multi-str': 'error',
@@ -260,57 +260,72 @@ module.exports = {
     'no-octal-escape': 'error',
 
     // 禁止对函数参数再赋值
-    'no-param-reassign': ['error', {
-      props: true,
-      ignorePropertyModificationsFor: []
-    }],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [],
+      },
+    ],
 
     // 禁止使用 __proto__ 属性
     'no-proto': 'error',
 
     // 禁止重新声明变量
-    'no-redeclare': ['error', { 'builtinGlobals': true }],
+    'no-redeclare': ['error', { builtinGlobals: true }],
 
     // 禁止使用某些不被建议的对象属性
-    'no-restricted-properties': ['error', {
-      object: 'arguments',
-      property: 'callee',
-      message: 'arguments.callee is deprecated',
-    }, {
-      object: 'global',
-      property: 'isFinite',
-      message: 'Please use Number.isFinite instead',
-    }, {
-      object: 'self',
-      property: 'isFinite',
-      message: 'Please use Number.isFinite instead',
-    }, {
-      object: 'window',
-      property: 'isFinite',
-      message: 'Please use Number.isFinite instead',
-    }, {
-      object: 'global',
-      property: 'isNaN',
-      message: 'Please use Number.isNaN instead',
-    }, {
-      object: 'self',
-      property: 'isNaN',
-      message: 'Please use Number.isNaN instead',
-    }, {
-      object: 'window',
-      property: 'isNaN',
-      message: 'Please use Number.isNaN instead',
-    }, {
-      property: '__defineGetter__',
-      message: 'Please use Object.defineProperty instead.',
-    }, {
-      property: '__defineSetter__',
-      message: 'Please use Object.defineProperty instead.',
-    }, {
-      object: 'Math',
-      property: 'pow',
-      message: 'Use the exponentiation operator (**) instead.',
-    }],
+    'no-restricted-properties': [
+      'error',
+      {
+        object: 'arguments',
+        property: 'callee',
+        message: 'arguments.callee is deprecated',
+      },
+      {
+        object: 'global',
+        property: 'isFinite',
+        message: 'Please use Number.isFinite instead',
+      },
+      {
+        object: 'self',
+        property: 'isFinite',
+        message: 'Please use Number.isFinite instead',
+      },
+      {
+        object: 'window',
+        property: 'isFinite',
+        message: 'Please use Number.isFinite instead',
+      },
+      {
+        object: 'global',
+        property: 'isNaN',
+        message: 'Please use Number.isNaN instead',
+      },
+      {
+        object: 'self',
+        property: 'isNaN',
+        message: 'Please use Number.isNaN instead',
+      },
+      {
+        object: 'window',
+        property: 'isNaN',
+        message: 'Please use Number.isNaN instead',
+      },
+      {
+        property: '__defineGetter__',
+        message: 'Please use Object.defineProperty instead.',
+      },
+      {
+        property: '__defineSetter__',
+        message: 'Please use Object.defineProperty instead.',
+      },
+      {
+        object: 'Math',
+        property: 'pow',
+        message: 'Use the exponentiation operator (**) instead.',
+      },
+    ],
 
     // 禁止在 return 语句中使用赋值语句
     'no-return-assign': ['error', 'always'],
@@ -322,9 +337,7 @@ module.exports = {
     'no-script-url': 'error',
 
     // 禁止自我赋值，包括属性
-    'no-self-assign': ['error', {
-      props: true,
-    }],
+    'no-self-assign': ['error', { props: true }],
 
     // 禁止与自身比较
     'no-self-compare': 'error',
@@ -339,11 +352,14 @@ module.exports = {
     'no-unmodified-loop-condition': 'error',
 
     // 禁止出现未使用过的表达式
-    'no-unused-expressions': ['error', {
-      allowShortCircuit: false,
-      allowTernary: false,
-      allowTaggedTemplates: false,
-    }],
+    'no-unused-expressions': [
+      'error',
+      {
+        allowShortCircuit: false,
+        allowTernary: false,
+        allowTaggedTemplates: false,
+      },
+    ],
 
     // 禁止出现未使用过的标
     'no-unused-labels': 'error',
@@ -364,13 +380,13 @@ module.exports = {
     'no-void': 'error',
 
     // 禁用警告注释
-    'no-warning-comments': ['error', {
-      terms: [
-        'todo',
-        'fixme',
-      ],
-      location: 'start'
-    }],
+    'no-warning-comments': [
+      'error',
+      {
+        terms: ['todo', 'fixme'],
+        location: 'start',
+      },
+    ],
 
     // 禁止使用 with 语句
     'no-with': 'error',
@@ -388,7 +404,11 @@ module.exports = {
     'vars-on-top': 'error',
 
     // 强制使用括号把 IIFE 函数括起来
-    'wrap-iife': ['error', 'inside', { functionPrototypeMethods: true }],
+    'wrap-iife': [
+      'error',
+      'inside',
+      { functionPrototypeMethods: true },
+    ],
 
     // 禁止字面量在前的比较语句
     yoda: 'error',
@@ -417,16 +437,27 @@ module.exports = {
     'no-label-var': 'error',
 
     // 禁止使用特定的全局变量
-    'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(restrictedGlobals),
+    'no-restricted-globals': [
+      'error',
+      'isFinite',
+      'isNaN',
+    ].concat(restrictedGlobals),
 
     // 禁止变量声明与外层作用域的变量同名
-    'no-shadow': ['error', { 'builtinGlobals': true, 'hoist': 'all', 'allow': [] }],
+    'no-shadow': [
+      'error',
+      {
+        builtinGlobals: true,
+        hoist: 'all',
+        allow: [],
+      },
+    ],
 
     // 禁止重定义关键字
     'no-shadow-restricted-names': 'error',
 
     // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
-    'no-undef': ['error', { 'typeof': true }],
+    'no-undef': ['error', { typeof: true }],
 
     // 禁止将变量初始化为 undefined
     'no-undef-init': 'error',
@@ -435,15 +466,25 @@ module.exports = {
     'no-undefined': 'off',
 
     // 禁止出现未使用过的变量
-    'no-unused-vars': ['error', {
-      vars: 'all',
-      args: 'all',
-      ignoreRestSiblings: false,
-      caughtErrors: 'none'
-    }],
+    'no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        args: 'all',
+        ignoreRestSiblings: false,
+        caughtErrors: 'none',
+      },
+    ],
 
     // 禁止在变量定义之前使用它们
-    'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],
+    'no-use-before-define': [
+      'error',
+      {
+        functions: true,
+        classes: true,
+        variables: true,
+      },
+    ],
 
     /**
      * Node.js and CommonJS (11)
@@ -462,10 +503,13 @@ module.exports = {
     'no-buffer-constructor': 'error',
 
     // 禁止 require 调用与普通变量声明混合使用
-    'no-mixed-requires': ['error', {
-      grouping: true,
-      allowCall: true
-    }],
+    'no-mixed-requires': [
+      'error',
+      {
+        grouping: true,
+        allowCall: true,
+      },
+    ],
 
     // 禁止调用 require 时使用 new 操作符
     'no-new-require': 'error',
@@ -486,23 +530,39 @@ module.exports = {
     'no-sync': 'off',
 
     /**
-     * Stylistic Issues
+     * Stylistic Issues (90)
      */
 
     // 强制在数组开括号后和闭括号前换行
-    'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
+    'array-bracket-newline': [
+      'error',
+      {
+        multiline: true,
+        minItems: 3,
+      },
+    ],
 
     // 强制数组方括号旁使用一致的空格
     'array-bracket-spacing': ['error', 'never'],
 
     // 强制数组元素间出现换行
-    'array-element-newline': ['off', { multiline: true, minItems: 3 }],
+    'array-element-newline': [
+      'error',
+      {
+        multiline: true,
+        minItems: 3,
+      },
+    ],
 
     // 禁止或强制在代码块中开括号前和闭括号后有空格
     'block-spacing': ['error', 'always'],
 
     // 强制大括号风格
-    'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    'brace-style': [
+      'error',
+      '1tbs',
+      { allowSingleLine: true },
+    ],
 
     // 强制使用骆驼命名法
     camelcase: ['error', { properties: 'always' }],
@@ -511,16 +571,25 @@ module.exports = {
     'capitalized-comments': 'off',
 
     // 强制使用或禁止使用拖尾逗号
-    'comma-dangle': ['error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'always-multiline',
-    }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'always-multiline',
+      },
+    ],
 
     // 强制在逗号周围使用空格
-    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-spacing': [
+      'error',
+      {
+        before: false,
+        after: true,
+      },
+    ],
 
     // 强制逗号放置在行末
     'comma-style': ['error', 'last'],
@@ -562,100 +631,142 @@ module.exports = {
     'implicit-arrow-linebreak': ['error', 'beside'],
 
     // 强制使用一致的缩进
-    indent: ['error', 2, {
-      SwitchCase: 1,
-      VariableDeclarator: 1,
-      outerIIFEBody: 1,
-      MemberExpression: 1,
-      FunctionDeclaration: {
-        parameters: 1,
-        body: 1
+    indent: [
+      'error',
+      2,
+      {
+        SwitchCase: 1,
+        VariableDeclarator: 1,
+        outerIIFEBody: 1,
+        MemberExpression: 1,
+        FunctionDeclaration: {
+          parameters: 1,
+          body: 1,
+        },
+        FunctionExpression: {
+          parameters: 1,
+          body: 1,
+        },
+        CallExpression: { arguments: 1 },
+        ArrayExpression: 1,
+        ObjectExpression: 1,
+        ImportDeclaration: 1,
+        flatTernaryExpressions: false,
+
+        // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
+        ignoredNodes: [
+          'JSXElement',
+          'JSXElement > *',
+          'JSXAttribute',
+          'JSXIdentifier',
+          'JSXNamespacedName',
+          'JSXMemberExpression',
+          'JSXSpreadAttribute',
+          'JSXExpressionContainer',
+          'JSXOpeningElement',
+          'JSXClosingElement',
+          'JSXText',
+          'JSXEmptyExpression',
+          'JSXSpreadChild',
+        ],
+        ignoreComments: false,
       },
-      FunctionExpression: {
-        parameters: 1,
-        body: 1
-      },
-      CallExpression: {
-        arguments: 1
-      },
-      ArrayExpression: 1,
-      ObjectExpression: 1,
-      ImportDeclaration: 1,
-      flatTernaryExpressions: false,
-      // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
-      ignoredNodes: ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
-      ignoreComments: false
-    }],
+    ],
 
     // 强制在 JSX 属性中一致地使用双引号或单引号
     'jsx-quotes': ['error', 'prefer-double'],
 
     // 强制在对象字面量的属性中键和值之间使用一致的间距
-    'key-spacing': ['error', {
-      beforeColon: false,
-      afterColon: true,
-      mode: 'strict'
+    'key-spacing': [
+      'error',
+      {
+        beforeColon: false,
+        afterColon: true,
+        mode: 'strict',
+      },
+    ],
+
+    // 强制关键字周围空格的一致性
+    'keyword-spacing': ['error', {
+      before: true,
+      after: true
     }],
 
     // 强制行注释的位置
-    'line-comment-position': ['error', {
-      position: 'above',
-      ignorePattern: '',
-      applyDefaultIgnorePatterns: false,
-    }],
+    'line-comment-position': [
+      'error',
+      {
+        position: 'above',
+        ignorePattern: '',
+        applyDefaultIgnorePatterns: false,
+      },
+    ],
 
     // 强制使用一致的换行风格
     'linebreak-style': ['error', 'windows'],
 
     // 强制要求在注释周围有空行
-    'lines-around-comment': ['error', {
-      beforeBlockComment: true,
-      afterBlockComment: true,
-      beforeLineComment: true,
-      afterLineComment: false,
-      allowBlockStart: true,
-      allowBlockEnd: false,
-      allowObjectStart: true,
-      allowObjectEnd: false,
-      allowArrayStart: true,
-      allowArrayEnd: false,
-      allowClassStart: true,
-      allowClassEnd: false,
-      applyDefaultIgnorePatterns: false
-    }],
+    'lines-around-comment': [
+      'error',
+      {
+        beforeBlockComment: true,
+        afterBlockComment: false,
+        beforeLineComment: true,
+        afterLineComment: false,
+        allowBlockStart: true,
+        allowBlockEnd: false,
+        allowObjectStart: true,
+        allowObjectEnd: false,
+        allowArrayStart: true,
+        allowArrayEnd: false,
+        allowClassStart: true,
+        allowClassEnd: false,
+        applyDefaultIgnorePatterns: false,
+      },
+    ],
 
     // 强制要求或禁止类成员之间出现空行
-    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: false }],
+    'lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: false },
+    ],
 
-    // 强制块语句的最大可嵌套深度 
+    // 强制块语句的最大可嵌套深度
     'max-depth': 'off',
 
     // 强制一行的最大长度
-    'max-len': ['error', {
-      code: 100,
-      tabWidth: 4,
-      comments: 100,
-      ignoreComments: false,
-      ignoreTrailingComments: false,
-      ignoreUrls: true,
-      ignoreStrings: false,
-      ignoreTemplateLiterals: false,
-      ignoreRegExpLiterals: false
-    }],
+    'max-len': [
+      'error',
+      {
+        code: 100,
+        tabWidth: 4,
+        comments: 100,
+        ignoreComments: false,
+        ignoreTrailingComments: false,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: false,
+        ignoreRegExpLiterals: true,
+      },
+    ],
 
     // 强制文件的最大行数
-    'max-lines': ['error', {
-      max: 400,
-      skipBlankLines: true,
-      skipComments: true
-    }],
+    'max-lines': [
+      'error',
+      {
+        max: 400,
+        skipBlankLines: true,
+        skipComments: true,
+      },
+    ],
 
     // 强制回调函数最大嵌套深度
     'max-nested-callbacks': 'off',
 
     // 强制函数定义中最大的参数个数
     'max-params': 'off',
-    
+
     // 强制函数块中语句的最大数量
     'max-statements': 'off',
 
@@ -669,21 +780,24 @@ module.exports = {
     'multiline-ternary': ['error', 'always-multiline'],
 
     // 强制要求构造函数首字母大写
-    'new-cap': ['error', {
-      newIsCap: true,
-      capIsNew: false,
-      properties: false
-    }],
+    'new-cap': [
+      'error',
+      {
+        newIsCap: true,
+        capIsNew: false,
+        properties: false,
+      },
+    ],
 
     // 强制要求调用无参构造函数时带括号
     'new-parens': 'error',
-    
+
     // 强制要求方法链中一行最多的调用
     'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }],
 
     // 禁止使用 Array 构造函数
     'no-array-constructor': 'error',
-    
+
     // 禁止使用按位操作符
     'no-bitwise': 'error',
 
@@ -697,26 +811,48 @@ module.exports = {
     'no-lonely-if': 'error',
 
     // 禁止混合使用不同的操作符
-    'no-mixed-operators': ['error', {
-      // the list of arthmetic groups disallows mixing `%` and `**`
-      // with other arithmetic operators.
-      groups: [
-        ['%', '**'],
-        ['%', '+'],
-        ['%', '-'],
-        ['%', '*'],
-        ['%', '/'],
-        ['**', '+'],
-        ['**', '-'],
-        ['**', '*'],
-        ['**', '/'],
-        ['&', '|', '^', '~', '<<', '>>', '>>>'],
-        ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-        ['&&', '||'],
-        ['in', 'instanceof']
-      ],
-      allowSamePrecedence: false
-    }],
+    'no-mixed-operators': [
+      'error',
+      {
+      /*
+       * the list of arthmetic groups disallows mixing `%` and `**`
+       * with other arithmetic operators.
+       */
+        groups: [
+          ['%', '**'],
+          ['%', '+'],
+          ['%', '-'],
+          ['%', '*'],
+          ['%', '/'],
+          ['**', '+'],
+          ['**', '-'],
+          ['**', '*'],
+          ['**', '/'],
+          [
+            '&',
+            '|',
+            '^',
+            '~',
+            '<<',
+            '>>',
+            '>>>',
+          ],
+          [
+            '==',
+            '!=',
+            '===',
+            '!==',
+            '>',
+            '>=',
+            '<',
+            '<=',
+          ],
+          ['&&', '||'],
+          ['in', 'instanceof'],
+        ],
+        allowSamePrecedence: false,
+      },
+    ],
 
     // 禁止空格和 tab 混合使用
     'no-mixed-spaces-and-tabs': 'error',
@@ -725,11 +861,14 @@ module.exports = {
     'no-multi-assign': 'error',
 
     // 禁止出现多行空行
-    'no-multiple-empty-lines': ['error', {
-      max: 2,
-      maxEOF: 1,
-      maxBOF: 0
-    }],
+    'no-multiple-empty-lines': [
+      'error',
+      {
+        max: 2,
+        maxEOF: 1,
+        maxBOF: 0,
+      },
+    ],
 
     // 禁止使用否定表达式
     'no-negated-condition': 'off',
@@ -739,11 +878,290 @@ module.exports = {
 
     // 禁止使用 Object 构造函数
     'no-new-object': 'error',
-    
+
     // 禁止使用一元操作符 ++ 和 --
     'no-plusplus': 'error',
+
+    // 禁止使用特定的语法
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ForInStatement',
+        message: 'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+      },
+      {
+        selector: 'ForOfStatement',
+        message: 'iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.',
+      },
+      {
+        selector: 'LabeledStatement',
+        message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+      },
+      {
+        selector: 'WithStatement',
+        message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+      },
+    ],
+
+    // 禁止使用 tab
+    'no-tabs': 'error',
+
+    // 禁止使用三元操作符
+    'no-ternary': 'off',
+
+    // 禁止使用行尾空白
+    'no-trailing-spaces': 'error',
+
+    // 禁止标识符中有下划线
+    'no-underscore-dangle': 'off',
+
+    // 禁止使用不必要的三元操作符
+    'no-unneeded-ternary': ['error', { defaultAssignment: false }],
+
+    // 禁止属性前有空白
+    'no-whitespace-before-property': 'error',
+
+    // 强制单个语句的位置
+    'nonblock-statement-body-position': 'off',
+
+    // 强制大括号内换行符的一致性
+    'object-curly-newline': [
+      'error',
+      {
+        ObjectExpression: {
+          multiline: true,
+          minProperties: 3,
+        },
+        ObjectPattern: 'always',
+        ImportDeclaration: {
+          multiline: true,
+          minProperties: 3,
+        },
+        ExportDeclaration: {
+          multiline: true,
+          minProperties: 3,
+        },
+      },
+    ],
+
+    // 强制在花括号中使用一致的空格
+    'object-curly-spacing': ['error', 'always'],
+
+    // 强制将对象的属性放在不同的行上
+    'object-property-newline': ['error', { allowAllPropertiesOnSameLine: false }],
+
+    // 强制函数中的变量在一起声明或分开声明
+    'one-var': ['error', 'never'],
+
+    // 强制要求或禁止在变量声明周围换行
+    'one-var-declaration-per-line': ['error', 'always'],
+
+    // 强制要求或禁止尽可能地简化赋值操作
+    'operator-assignment': ['error', 'always'],
+
+    // 强制操作符使用一致的换行符风格
+    'operator-linebreak': [
+      'error',
+      'before',
+      { overrides: { '=': 'none' } },
+    ],
+
+    // 强制要求或禁止块内填充
+    'padded-blocks': ['error', 'always'],
+
+    // 强制要求或禁止在语句间填充空行
+    'padding-line-between-statements': [
+      'error',
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: 'case'
+      },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: 'default'
+      },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: 'return'
+      }
+    ],
+
+    // 强制要求对象字面量属性名称用引号括起来
+    'quote-props': [
+      'error',
+      'as-needed',
+      {
+        keywords: true,
+        unnecessary: true,
+        numbers: true
+      }
+    ],
+
+    // 强制使用一致的反勾号、双引号或单引号
+    quotes: [
+      'error',
+      'single',
+      {
+        avoidEscape: true,
+        allowTemplateLiterals: true,
+      }
+    ],
+
+    // 强制要求使用 JSDoc 注释
+    'require-jsdoc': 'off',
+
+    // 强制要求或禁止使用分号代替 ASI
+    'semi': ['error', 'always'],
+
+    // 强制分号之前和之后使用一致的空格
+    'semi-spacing': ['error', { before: false, after: true }],
+
+    // 强制分号的位置
+    'semi-style': ['error', 'last'],
+
+    // 强制要求对象属性按序排列
+    'sort-keys': 'off',
+
+    // 强制要求变量排序
+    'sort-vars': 'off',
+
+    // 强制要求或禁止语句块之前的空格
+    'space-before-blocks': 'error',
+
+    // 强制要求或禁止函数圆括号之前有一个空格
+    'space-before-function-paren': ['error', {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always'
+    }],
+
+    // 禁止或强制圆括号内的空格
+    'space-in-parens': ['error', 'never'],
+
+    // 强制要求中缀操作符周围有空格
+    'space-infix-ops': 'error',
+    
+    // 强制要求或禁止在一元操作符之前或之后存在空格
+    'space-unary-ops': ['error', {
+      words: true,
+      nonwords: false,
+      overrides: {
+      },
+    }],
+
+    // 强制要求或禁止在注释前有空白
+    'spaced-comment': ['error', 'always'],
+
+    // 强制要求在 switch 语句的冒号左右有空格
+    'switch-colon-spacing': ['error', { after: true, before: false }],
+
+    // 强制要求或禁止在模板标记和它们的字面量之间有空格 
+    'template-tag-spacing': ['error', 'never'],
+
+    // 强制要求或禁止使用 Unicode 字节顺序标记 (BOM)
+    'unicode-bom': ['error', 'never'],
+
+    // 强制要求正则表达式被包裹起来
+    'wrap-regex': 'off',
+
+    /**
+     * ES6
+     */
+
+    // 强制要求箭头函数体使用大括号
+    'arrow-body-style': ['error', 'as-needed', {
+      requireReturnForObjectLiteral: true,
+    }],
+
+    // 强制要求箭头函数的参数使用圆括号
+    'arrow-parens': ['error', 'always'],
+
+    // 强制要求箭头函数的箭头之前或之后有空格
+    'arrow-spacing': ['error', { before: true, after: true }],
+
+    // 禁止构造函数中无效的 super() 的调用
+    'constructor-super': 'error',
+
+    // 强制 generator 函数中 * 号周围有空格
+    'generator-star-spacing': ['error', 'before'],
+
+    // 禁止修改类声明的变量
+    'no-class-assign': 'error',
+
+    // 禁止在可能与比较操作符相混淆的地方使用箭头函数
+    'no-confusing-arrow': ['error', {
+      allowParens: true,
+    }],
+
+    // 禁止改变用 const 声明的变量
+    'no-const-assign': 'error',
+
+    // 禁止类成员中有重复的名称
+    'no-dupe-class-members': 'error',
+
+    // 禁止重复导入
+    'no-duplicate-imports': ['error', { includeExports: true }],
+
+    // 禁止 Symbol 操作符和 new 一起使用
+    'no-new-symbol': 'error',
+
+    // 禁止 import 特定的模块
+    'no-restricted-imports': 'off',
+
+    // 禁止在构造函数中在调用 super() 之前使用 this 或 super
+    'no-this-before-super': 'error',
+
+    // 禁止在对象中使用不必要的计算属性
+    'no-useless-computed-key': 'error',
+
+    // 禁止使用不必要的构造函数
+    'no-useless-constructor': 'error',
+
+    // 禁止在 import 和 export 和解构赋值时将引用重命名为相同的名字
+    'no-useless-rename': 'error',
+
+    // 强制要求使用 let 或 const 而不是 var
+    'no-var': 'error',
+
+    // 强制要求对象字面量简写语法
+    'object-shorthand': ['error', 'always', {
+      avoidQuotes: true,
+      ignoreConstructors: false,
+      avoidExplicitReturnArrows: true,
+    }],
+
+    // 强制要求使用箭头函数作为回调
+    'prefer-arrow-callback': ['error', {
+      allowNamedFunctions: false,
+      allowUnboundThis: true,
+    }],
+
+    // 强制建议使用 const
+    'prefer-const': ['error', {
+      destructuring: 'any',
+      ignoreReadBeforeAssign: true,
+    }],
+
+    // 强制使用数组和对象解构
+    'prefer-destructuring': [
+      'error',
+      {
+        VariableDeclarator: {
+          array: false,
+          object: true,
+        },
+        AssignmentExpression: {
+          array: true,
+          object: true,
+        },
+      },
+      {
+        enforceForRenamedProperties: false,
+      }
+    ],
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
+  parserOptions: { parser: 'babel-eslint' },
 };

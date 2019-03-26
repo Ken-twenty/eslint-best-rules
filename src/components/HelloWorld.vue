@@ -76,27 +76,47 @@ import testTool from './tool';
 
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
+  props: { msg: String },
   data() {
+
     return {
-      test: {},
+      test: {
+        one: 1,
+        two: 2,
+        three: 3,
+      },
+      testArr: [1, 2],
     };
+
   },
   methods: {
     testTool,
-    testFn: function () {
+    testFn() {
+
       console.log('test');
+
     },
   },
   mounted() {
+
     const cls = new TestCls();
     this.test = cls;
+
     /**
      * fuck
      */
-    this.testFn();
+    if (window.test) {
+
+      this.testFn();
+
+    }
+
+    const {
+      testArr,
+    } = this;
+
+    console.log(testArr);
+
   },
 };
 </script>
